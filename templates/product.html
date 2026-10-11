@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cafe Products</title>
+</head>
+<body>
+    <h1>Our Cafe Products</h1>
+
+    {% if products %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Product Number</th>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+
+        {% for product in products %}
+        <tr>
+            <td>{{ product.product_no }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No products found</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
