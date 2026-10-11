@@ -12,7 +12,7 @@ def get_connection():
         port=3306,
         user="root",
         password="Chenna123",
-        database="cafe_db",
+        database="electronic_db",
         cursorclass=pymysql.cursors.DictCursor
     )
 
@@ -21,7 +21,7 @@ def home(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="home.html",
-        context={"message": "Welcome to My Cafe"}
+        context={"message": "Welcome to Electronic Essentials "}
     )
 
 @app.get("/products", response_class=HTMLResponse)
@@ -31,7 +31,7 @@ def products(request: Request):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                "SELECT product_no, product_name, price FROM cafe_products"
+                "SELECT product_no, product_name, price FROM Electronic_products"
             )
             product_list = cursor.fetchall()
     finally:
@@ -51,8 +51,8 @@ def login(
     print(username, password)
 
     product_list = [
-        {"product_no": 1, "product_name": "Cofee", "price": 110},
-        {"product_no": 2, "product_name": "Cappuccino", "price": 120}
+        {"product_no": 1, "product_name": "Realme Buds", "price": 1899 },
+        {"product_no": 2, "product_name": "Smart Speaker", "price": 4990}
     ]
 
     return templates.TemplateResponse(
